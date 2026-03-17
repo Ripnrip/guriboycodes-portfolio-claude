@@ -36,8 +36,7 @@ const Stats = () => {
         <motion.div
           variants={containerVariants}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
+          animate="visible"
           className="grid grid-cols-2 md:grid-cols-4 gap-8"
         >
           {stats.map((stat, i) => (

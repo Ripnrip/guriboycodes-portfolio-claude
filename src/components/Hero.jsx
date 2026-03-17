@@ -16,17 +16,15 @@ const Hero = () => {
           {/* Left Content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
             className="space-y-6"
           >
             <div className="space-y-2">
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                viewport={{ once: true }}
                 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight"
               >
                 <span className="text-claude-text">Building Legendary Apps</span>
@@ -37,9 +35,8 @@ const Hero = () => {
               </motion.h1>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                viewport={{ once: true }}
                 className="text-lg text-claude-text_dim max-w-xl"
               >
                 Staff iOS & AI/ML Engineer at PayPal, crafting scalable solutions with Claude's innovative approach.
@@ -49,9 +46,8 @@ const Hero = () => {
             {/* CTA Buttons */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              viewport={{ once: true }}
               className="flex flex-wrap gap-4 pt-4"
             >
               <button className="px-6 py-3 bg-claude-primary text-claude-dark font-semibold rounded-lg hover:bg-claude-accent transition-colors flex items-center gap-2 group">
@@ -67,9 +63,8 @@ const Hero = () => {
             {/* Social Links */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              viewport={{ once: true }}
               className="flex gap-4 pt-4"
             >
               {socialLinks.map((link, i) => {
@@ -93,9 +88,8 @@ const Hero = () => {
           {/* Right Image */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
             className="flex justify-center"
           >
             <div className="relative w-64 h-64 sm:w-80 sm:h-80 rounded-2xl overflow-hidden border-2 border-claude-primary/30">
