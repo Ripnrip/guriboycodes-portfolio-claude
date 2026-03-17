@@ -1,23 +1,38 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Zap, Lightbulb, Users } from 'lucide-react'
+import { Zap, Lightbulb, Users, Rocket, Heart, Share2 } from 'lucide-react'
 
 const Philosophy = () => {
   const pillars = [
     {
-      icon: Zap,
-      title: 'Scale & Impact',
-      description: 'Building systems that serve millions of users with elegance and efficiency. Every line of code matters.'
+      icon: Heart,
+      title: 'Ship with Soul',
+      description: 'Products should delight, not just function. Every interaction matters and deserves craftsmanship.'
     },
     {
-      icon: Lightbulb,
-      title: 'Innovation',
-      description: 'Pushing boundaries with AI/ML, exploring new paradigms in iOS development and emerging technologies.'
+      icon: Rocket,
+      title: 'Hack the System',
+      description: '28+ hackathons taught me to think fast and build faster. Speed meets intelligence in every project.'
     },
     {
       icon: Users,
-      title: 'Leadership',
-      description: 'Mentoring teams, sharing knowledge, and elevating the next generation of engineers.'
+      title: 'Mentor Forward',
+      description: '500+ interviews, 20+ engineers mentored. I believe in lifting others as I climb.'
+    },
+    {
+      icon: Share2,
+      title: 'Bridge Worlds',
+      description: 'From mobile to AI, from PayPal to hackathons. Connecting domains creates innovation.'
+    },
+    {
+      icon: Lightbulb,
+      title: 'Community First',
+      description: 'ERG leadership, advisory boards, volunteer education. Tech thrives when everyone belongs.'
+    },
+    {
+      icon: Zap,
+      title: 'Relentless Growth',
+      description: 'Stay curious, keep learning, push boundaries. Excellence is a journey, not a destination.'
     }
   ]
 
@@ -61,7 +76,7 @@ const Philosophy = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid md:grid-cols-3 gap-8"
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           {pillars.map((pillar, i) => {
             const Icon = pillar.icon
@@ -69,11 +84,15 @@ const Philosophy = () => {
               <motion.div
                 key={i}
                 variants={itemVariants}
-                className="p-8 rounded-lg bg-claude-card border border-claude-primary/20 hover:border-claude-primary/50 hover:bg-claude-card/[0.9] transition-all duration-300 group"
+                className="p-8 rounded-lg bg-gradient-to-br from-claude-card to-claude-card/50 border border-claude-primary/20 hover:border-claude-primary/50 hover:shadow-lg hover:shadow-claude-primary/20 transition-all duration-300 group"
+                whileHover={{ y: -8 }}
               >
-                <div className="mb-6 inline-flex p-4 rounded-lg bg-claude-primary/20 group-hover:bg-claude-primary/30 transition-colors">
+                <motion.div
+                  className="mb-6 inline-flex p-4 rounded-lg bg-claude-primary/20 group-hover:bg-claude-primary/30 transition-colors"
+                  whileHover={{ rotate: 10, scale: 1.1 }}
+                >
                   <Icon size={32} className="text-claude-primary" />
-                </div>
+                </motion.div>
                 <h3 className="text-xl font-bold text-claude-text mb-4 group-hover:text-claude-primary transition-colors">
                   {pillar.title}
                 </h3>

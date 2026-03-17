@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Play, X } from 'lucide-react'
 import { hackathons } from '../data/hackathons'
+import CountUp from '../utils/CountUp'
 
 const Hackathons = () => {
   const [selectedVideo, setSelectedVideo] = useState(null)
@@ -26,6 +27,13 @@ const Hackathons = () => {
     },
   }
 
+  const stats = [
+    { label: 'Hackathons', number: 28, suffix: '+' },
+    { label: 'Countries', number: 6, suffix: '+' },
+    { label: '1st Place Wins', number: 3, suffix: '+' },
+    { label: 'Years Active', number: 9, suffix: '+' },
+  ]
+
   return (
     <section id="hackathons" className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
@@ -34,12 +42,34 @@ const Hackathons = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-3xl sm:text-4xl font-bold mb-12 text-center"
+          className="text-3xl sm:text-4xl font-bold mb-4 text-center"
         >
           <span className="bg-gradient-to-r from-claude-primary to-claude-secondary bg-clip-text text-transparent">
             Hackathon Victories
           </span>
         </motion.h2>
+
+        {/* Stats Ticker */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: true }}
+          className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-16"
+        >
+          {stats.map((stat, i) => (
+            <div
+              key={i}
+              className="p-4 rounded-lg bg-claude-card border border-claude-primary/20 text-center hover:border-claude-primary/50 transition-colors"
+            >
+              <div className="text-3xl font-bold text-claude-primary mb-1">
+                <CountUp end={stat.number} duration={2} />
+                <span>{stat.suffix}</span>
+              </div>
+              <p className="text-xs sm:text-sm text-claude-text_dim">{stat.label}</p>
+            </div>
+          ))}
+        </motion.div>
 
         <motion.div
           variants={containerVariants}

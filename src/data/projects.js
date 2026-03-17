@@ -167,6 +167,25 @@ export const projects = [
     technologies: ['ARKit', 'Swift', 'USDZ', 'Retail'],
     links: { github: '#', demo: '#' },
   },
+  {
+    id: 19,
+    title: 'Agentic-SEO',
+    category: 'AI/ML',
+    description: 'AI-powered agentic SEO platform that automates content optimization, keyword research, and search ranking analysis using multi-agent orchestration.',
+    image: `${CDN_BASE}/images/projects/flow-ghibli.png`,
+    technologies: ['Python', 'AI Agents', 'SEO', 'LangChain'],
+    links: { github: '#', demo: 'https://agentic-seo.vercel.app' },
+    featured: true,
+  },
+  {
+    id: 20,
+    title: 'Wedding Website',
+    category: 'Creative',
+    description: 'A beautiful wedding website celebrating our love story, with RSVP, travel info, and event details.',
+    image: `${CDN_BASE}/images/projects/rosicrucian-parenting-ghibli.png`,
+    technologies: ['Next.js', 'React', 'Vercel'],
+    links: { github: '#', demo: 'https://www.ginaandgurinder.com/' },
+  },
 ]
 
 export const getCategories = () => {

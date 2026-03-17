@@ -1,15 +1,21 @@
 import React, { useState } from 'react'
 import { Menu, X, Moon, Sun } from 'lucide-react'
 import { motion } from 'framer-motion'
+import useEasterEgg from '../hooks/useEasterEgg'
+import EasterEggModal from './EasterEggModal'
 
 const Navigation = ({ darkMode, setDarkMode }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [easterEggOpen, setEasterEggOpen] = useState(false)
+  const { handleProfileClick } = useEasterEgg(() => setEasterEggOpen(true))
 
   const navLinks = [
     { label: 'About', href: '#about' },
+    { label: 'Skills', href: '#skills' },
     { label: 'Projects', href: '#projects' },
     { label: 'Hackathons', href: '#hackathons' },
-    { label: 'Experience', href: '#experience' },
+    { label: 'Videos', href: '#videos' },
+    { label: 'Leadership', href: '#leadership' },
     { label: 'Contact', href: '#contact' },
   ]
 
@@ -23,12 +29,15 @@ const Navigation = ({ darkMode, setDarkMode }) => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
             className="flex items-center gap-2 cursor-pointer"
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            onClick={() => {
+              handleProfileClick()
+              window.scrollTo({ top: 0, behavior: 'smooth' })
+            }}
           >
             <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-claude-primary to-claude-accent flex items-center justify-center font-bold text-claude-dark">
               G
             </div>
-            <span className="text-lg font-bold text-claude-text hidden sm:inline">GuriboyCodes</span>
+            <span className="text-lg font-bold text-claude-text hidden sm:inline hover:text-claude-primary transition-colors">GuriboyCodes</span>
           </motion.div>
 
           {/* Desktop Nav Links */}
@@ -93,6 +102,9 @@ const Navigation = ({ darkMode, setDarkMode }) => {
           </motion.div>
         )}
       </div>
+
+      {/* Easter Egg Modal */}
+      <EasterEggModal isOpen={easterEggOpen} onClose={() => setEasterEggOpen(false)} />
     </nav>
   )
 }
