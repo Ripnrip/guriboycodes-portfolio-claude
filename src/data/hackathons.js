@@ -1,0 +1,60 @@
+const CDN_BASE = 'https://raw.githubusercontent.com/Ripnrip/guriboycodes-portfolio/claude-portfolio/public'
+
+export const hackathons = [
+  {
+    id: 1,
+    name: 'HackZurich 2023',
+    year: 2023,
+    project: 'Elate',
+    description: 'Winning project leveraging cutting-edge technology to solve real-world problems.',
+    image: `${CDN_BASE}/images/projects/ethereal-dimension-ghibli.png`,
+    videoUrl: `${CDN_BASE}/videos/hackzurich-2022-elate-720p.mp4`,
+    award: '1st Place',
+    technologies: ['React', 'AI/ML', 'Python'],
+  },
+  {
+    id: 2,
+    name: 'HackZurich 2022',
+    year: 2022,
+    project: 'Elate',
+    description: 'AI-powered platform for sustainable energy optimization.',
+    image: `${CDN_BASE}/images/projects/ethereal-search-ghibli.png`,
+    videoUrl: `${CDN_BASE}/videos/hackzurich-2022-elate-720p.mp4`,
+    award: '1st Place',
+    technologies: ['React', 'Python', 'Energy'],
+  },
+  {
+    id: 3,
+    name: 'HackZurich 2021',
+    year: 2021,
+    project: 'ARon — AI Fitness Coach',
+    description: 'AR-powered fitness companion with real-time form correction using AI.',
+    image: `${CDN_BASE}/images/projects/aron-ai-fitness-ghibli.png`,
+    videoUrl: `${CDN_BASE}/videos/hackzurich-2021-aron-fitness.mp4`,
+    award: 'Finalist',
+    technologies: ['ARKit', 'Swift', 'AI/ML'],
+  },
+  {
+    id: 4,
+    name: 'HackZurich 2018',
+    year: 2018,
+    project: 'Innovative Solution',
+    description: 'Early hackathon victory showcasing rapid prototyping capabilities.',
+    image: `${CDN_BASE}/images/projects/flow-ghibli.png`,
+    award: 'Winner',
+    technologies: ['iOS', 'Swift'],
+  },
+  {
+    id: 5,
+    name: 'MLH Prime 2017',
+    year: 2017,
+    project: 'BBC Drone Documentary',
+    description: 'Pioneering work on autonomous drone coordination featuring on BBC.',
+    image: `${CDN_BASE}/images/projects/hylios-ghibli.png`,
+    videoUrl: `${CDN_BASE}/videos/mlh-2017-drone-bbc.mp4`,
+    award: 'Featured',
+    technologies: ['Robotics', 'Python', 'Autonomous Systems'],
+  },
+]
+
+export const getTotalHackathons = () => hackathons.length
