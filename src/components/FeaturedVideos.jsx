@@ -5,41 +5,36 @@ import { Play, X } from 'lucide-react'
 const FeaturedVideos = () => {
   const [selectedVideo, setSelectedVideo] = useState(null)
 
+  const CDN = 'https://raw.githubusercontent.com/Ripnrip/guriboycodes-portfolio-claude/main/public'
+
   const videos = [
     {
       id: 1,
-      title: 'Carly — AR Car Visualizer',
-      event: 'HackZurich 2018',
-      url: 'https://raw.githubusercontent.com/Ripnrip/guriboycodes-portfolio/claude-portfolio/public/videos/hackzurich-carly.mp4',
-      thumbnail: 'https://raw.githubusercontent.com/Ripnrip/guriboycodes-portfolio/claude-portfolio/public/images/projects/carly-ar-car-ghibli.png',
+      title: 'Elate — AI Wellness Platform',
+      event: 'HackZurich 2022 · Finalist',
+      url: `${CDN}/videos/hackzurich-2022-elate-720p.mp4`,
+      thumbnail: `${CDN}/images/thumbnails/hackzurich-2022-elate.jpg`,
     },
     {
       id: 2,
-      title: 'Elate',
-      event: 'HackZurich 2022',
-      url: 'https://raw.githubusercontent.com/Ripnrip/guriboycodes-portfolio-claude/main/public/videos/hackzurich-2022-elate-720p.mp4',
-      thumbnail: 'https://raw.githubusercontent.com/Ripnrip/guriboycodes-portfolio/claude-portfolio/public/images/projects/ethereal-search-ghibli.png',
+      title: 'ARon — AI Fitness Coach',
+      event: 'HackZurich 2021 · Finalist',
+      url: `${CDN}/videos/hackzurich-2021-aron-fitness.mp4`,
+      thumbnail: `${CDN}/images/thumbnails/hackzurich-2021-aron.jpg`,
     },
     {
       id: 3,
-      title: 'ARon — AI Fitness Coach',
-      event: 'HackZurich 2021',
-      url: 'https://raw.githubusercontent.com/Ripnrip/guriboycodes-portfolio-claude/main/public/videos/hackzurich-2021-aron-fitness.mp4',
-      thumbnail: 'https://raw.githubusercontent.com/Ripnrip/guriboycodes-portfolio/claude-portfolio/public/images/projects/aron-ai-fitness-ghibli.png',
+      title: 'Carly — AR Car Visualizer',
+      event: 'HackZurich 2018 · Finalist',
+      url: 'https://raw.githubusercontent.com/Ripnrip/guriboycodes-portfolio/claude-portfolio/public/videos/hackzurich-carly.mp4',
+      thumbnail: `${CDN}/images/thumbnails/hackzurich-2018.jpg`,
     },
     {
       id: 4,
-      title: 'BBC Drone Documentary',
-      event: 'MLH Prime 2017',
-      url: 'https://raw.githubusercontent.com/Ripnrip/guriboycodes-portfolio-claude/main/public/videos/mlh-2017-drone-bbc.mp4',
-      thumbnail: 'https://raw.githubusercontent.com/Ripnrip/guriboycodes-portfolio/claude-portfolio/public/images/projects/hylios-ghibli.png',
-    },
-    {
-      id: 5,
-      title: 'HackZurich 2018',
-      event: 'Winning Solution',
-      url: 'https://raw.githubusercontent.com/Ripnrip/guriboycodes-portfolio-claude/main/public/videos/hackzurich-2018.mp4',
-      thumbnail: 'https://raw.githubusercontent.com/Ripnrip/guriboycodes-portfolio/claude-portfolio/public/images/projects/flow-ghibli.png',
+      title: 'London Drone — BBC Documentary',
+      event: 'MLH Prime 2017 · 1st Place',
+      url: `${CDN}/videos/mlh-2017-drone-bbc.mp4`,
+      thumbnail: `${CDN}/images/thumbnails/mlh-2017-drone.jpg`,
     },
   ]
 

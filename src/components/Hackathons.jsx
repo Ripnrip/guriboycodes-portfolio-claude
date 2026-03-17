@@ -30,7 +30,7 @@ const Hackathons = () => {
   const stats = [
     { label: 'Hackathons', number: 28, suffix: '+' },
     { label: 'Countries', number: 6, suffix: '+' },
-    { label: '1st Place Wins', number: 3, suffix: '+' },
+    { label: '1st Place Win', number: 1, suffix: '' },
     { label: 'Years Active', number: 9, suffix: '+' },
   ]
 
@@ -44,7 +44,7 @@ const Hackathons = () => {
           className="text-3xl sm:text-4xl font-bold mb-4 text-center"
         >
           <span className="bg-gradient-to-r from-claude-primary to-claude-secondary bg-clip-text text-transparent">
-            Hackathon Victories
+            Hackathon Journey
           </span>
         </motion.h2>
 

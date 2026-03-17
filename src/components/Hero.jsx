@@ -94,8 +94,8 @@ const Hero = () => {
           >
             <div className="relative w-64 h-64 sm:w-80 sm:h-80 rounded-2xl overflow-hidden border-2 border-claude-primary/30">
               <img
-                src="https://raw.githubusercontent.com/Ripnrip/guriboycodes-portfolio/claude-portfolio/public/images/projects/flow-ghibli.png"
-                alt="GuriboyCodes"
+                src="https://raw.githubusercontent.com/Ripnrip/guriboycodes-portfolio-claude/main/public/images/profile/gurinder.jpg"
+                alt="Gurinder Singh — GuriboyCodes"
                 className="w-full h-full object-cover"
                 loading="lazy"
               />
