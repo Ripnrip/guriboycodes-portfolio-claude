@@ -77,9 +77,8 @@ const CareerJourney = () => {
       <div className="max-w-4xl mx-auto">
         <motion.h2
           initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
           className="text-3xl sm:text-4xl font-bold mb-12 text-center"
         >
           <span className="bg-gradient-to-r from-claude-primary to-claude-secondary bg-clip-text text-transparent">
@@ -92,9 +91,8 @@ const CareerJourney = () => {
             <motion.div
               key={position.id}
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              viewport={{ once: true }}
             >
               <button
                 onClick={() => setExpandedId(expandedId === position.id ? -1 : position.id)}

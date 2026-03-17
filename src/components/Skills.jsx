@@ -94,9 +94,8 @@ const Skills = () => {
       <div className="max-w-6xl mx-auto">
         <motion.h2
           initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
           className="text-3xl sm:text-4xl font-bold mb-2 text-center"
         >
           <span className="bg-gradient-to-r from-claude-primary to-claude-secondary bg-clip-text text-transparent">
@@ -106,9 +105,8 @@ const Skills = () => {
 
         <motion.p
           initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          viewport={{ once: true }}
           className="text-center text-claude-text_dim mb-12"
         >
           Expertise across mobile, AI/ML, backend, frontend, and development tools
@@ -117,9 +115,8 @@ const Skills = () => {
         {/* Category Filter */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          viewport={{ once: true }}
           className="flex flex-wrap justify-center gap-4 mb-16"
         >
           {categories.map((category) => {
@@ -147,8 +144,7 @@ const Skills = () => {
         <motion.div
           variants={containerVariants}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
+          animate="visible"
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           {skillsData[activeCategory].map((skill, i) => (

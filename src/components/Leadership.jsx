@@ -99,9 +99,8 @@ const Leadership = () => {
         {/* Hero Stat */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
           className="text-center mb-16"
         >
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">
@@ -124,8 +123,7 @@ const Leadership = () => {
         <motion.div
           variants={containerVariants}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
+          animate="visible"
           className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6 mb-16"
         >
           {leadershipStats.map((stat, i) => {
@@ -152,17 +150,15 @@ const Leadership = () => {
         {/* Leadership Initiatives */}
         <motion.div
           initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          viewport={{ once: true }}
           className="mb-16"
         >
           <h3 className="text-2xl font-bold text-claude-text mb-8 text-center">Leadership Initiatives</h3>
           <motion.div
             variants={containerVariants}
             initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
+            animate="visible"
             className="grid md:grid-cols-2 gap-6"
           >
             {initiatives.map((initiative, i) => {
@@ -192,9 +188,8 @@ const Leadership = () => {
         {/* Featured Community Project */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          viewport={{ once: true }}
           className="p-8 rounded-lg bg-gradient-to-br from-claude-primary/20 to-claude-secondary/10 border border-claude-primary/40 text-center"
         >
           <h3 className="text-2xl font-bold text-claude-text mb-2">Featured Community Project</h3>
@@ -212,9 +207,8 @@ const Leadership = () => {
         {/* Quote */}
         <motion.div
           initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          viewport={{ once: true }}
           className="mt-16 text-center"
         >
           <p className="text-2xl font-bold text-claude-text italic">

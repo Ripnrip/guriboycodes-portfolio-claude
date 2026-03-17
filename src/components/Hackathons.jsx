@@ -39,9 +39,8 @@ const Hackathons = () => {
       <div className="max-w-6xl mx-auto">
         <motion.h2
           initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
           className="text-3xl sm:text-4xl font-bold mb-4 text-center"
         >
           <span className="bg-gradient-to-r from-claude-primary to-claude-secondary bg-clip-text text-transparent">
@@ -52,9 +51,8 @@ const Hackathons = () => {
         {/* Stats Ticker */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          viewport={{ once: true }}
           className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-16"
         >
           {stats.map((stat, i) => (
@@ -74,8 +72,7 @@ const Hackathons = () => {
         <motion.div
           variants={containerVariants}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
+          animate="visible"
           className="grid md:grid-cols-2 gap-8"
         >
           {hackathons.map((hackathon) => (

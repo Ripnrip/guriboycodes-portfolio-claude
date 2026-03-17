@@ -61,9 +61,8 @@ const Philosophy = () => {
       <div className="max-w-6xl mx-auto">
         <motion.h2
           initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
           className="text-3xl sm:text-4xl font-bold mb-12 text-center"
         >
           <span className="bg-gradient-to-r from-claude-primary to-claude-secondary bg-clip-text text-transparent">
@@ -74,8 +73,7 @@ const Philosophy = () => {
         <motion.div
           variants={containerVariants}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
+          animate="visible"
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           {pillars.map((pillar, i) => {
