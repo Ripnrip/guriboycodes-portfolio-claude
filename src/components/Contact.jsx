@@ -6,7 +6,7 @@ const Contact = () => {
   const socialLinks = [
     { icon: Github, href: 'https://github.com/Ripnrip', label: 'GitHub' },
     { icon: Linkedin, href: 'https://www.linkedin.com/in/gurinder-singh-a30a1a48', label: 'LinkedIn' },
-    { icon: Mail, href: 'mailto:gurinder@binary-bros.com', label: 'Email' },
+    { icon: Mail, href: 'mailto:contact@guriboycodes.com', label: 'Email' },
   ]
 
   return (
@@ -60,7 +60,7 @@ const Contact = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          href="mailto:gurinder@binary-bros.com"
+          href="mailto:contact@guriboycodes.com"
           className="inline-flex items-center gap-2 px-8 py-3 bg-claude-primary text-claude-dark font-semibold rounded-lg hover:bg-claude-accent transition-colors group"
         >
           <span>Send me an email</span>

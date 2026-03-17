@@ -12,7 +12,8 @@ const CareerJourney = () => {
       role: 'Staff Software Engineer',
       period: '2020 - Present',
       achievements: [
-        'Project Mercury (AI/GraphRAG/MCP)',
+        'Agent0 — Deployed autonomous AI agent framework to Venmo & PayPal engineering teams',
+        'Project Mercury — AI-Powered Agentic E-Commerce (GraphRAG/MCP), prototype built in 72 hrs, presented to SVP of AI',
         '$400M Amex partnership',
         '$60M CVS contract',
         'QRC Widget Patent (66% friction reduction)',
@@ -20,7 +21,7 @@ const CareerJourney = () => {
         'Dynamic Island/Live Activities',
         '90M+ users impacted'
       ],
-      technologies: ['iOS', 'SwiftUI', 'Python', 'GraphRAG', 'MCP', 'AI/ML'],
+      technologies: ['iOS', 'SwiftUI', 'Python', 'GraphRAG', 'MCP', 'AI Agents', 'SDXL LoRA'],
     },
     {
       id: 1,
@@ -45,30 +46,6 @@ const CareerJourney = () => {
         'Secure authentication'
       ],
       technologies: ['iOS', 'Swift', 'FinTech', 'Security'],
-    },
-    {
-      id: 3,
-      company: 'BeeBack',
-      role: 'Co-Founder',
-      period: '2017 - 2019',
-      achievements: [
-        'Published iOS app',
-        'Product strategy',
-        'User acquisition'
-      ],
-      technologies: ['iOS', 'Swift', 'Startup', 'Product'],
-    },
-    {
-      id: 4,
-      company: 'Bayside HS',
-      role: 'Advisory Board',
-      period: '2017 - Present',
-      achievements: [
-        'CTE curriculum design',
-        'VR/ML/IoT/Mobile/Web/Blockchain education',
-        'Mentoring next generation developers'
-      ],
-      technologies: ['VR', 'ML', 'IoT', 'Education'],
     },
   ]
 
