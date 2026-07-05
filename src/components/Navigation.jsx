@@ -12,10 +12,12 @@ const Navigation = () => {
   const navLinks = [
     { label: 'About', href: '#about' },
     { label: 'Skills', href: '#skills' },
+    { label: 'Graph', href: '#graph' },
     { label: 'Projects', href: '#projects' },
     { label: 'Hackathons', href: '#hackathons' },
     { label: 'Videos', href: '#videos' },
     { label: 'Leadership', href: '#leadership' },
+    { label: 'Brain', href: '#brain' },
     { label: 'Contact', href: '#contact' },
   ]
 
