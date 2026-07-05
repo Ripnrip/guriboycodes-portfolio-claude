@@ -66,8 +66,8 @@ const Skills = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
+        staggerChildren: 0.08,
+        delayChildren: 0.1,
       },
     },
   }
@@ -77,7 +77,7 @@ const Skills = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.5 },
+      transition: { duration: 0.4 },
     },
   }
 
@@ -85,20 +85,20 @@ const Skills = () => {
     hidden: { scaleX: 0 },
     visible: {
       scaleX: 1,
-      transition: { duration: 0.8, ease: 'easeOut' },
+      transition: { duration: 0.6, ease: 'easeOut' },
     },
   }
 
   return (
-    <section id="skills" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-transparent via-claude-primary/5 to-transparent">
-      <div className="max-w-6xl mx-auto">
+    <section id="skills" className="px-4 py-20 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-6xl">
         <motion.h2
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-3xl sm:text-4xl font-bold mb-2 text-center"
+          transition={{ duration: 0.5 }}
+          className="mb-4 text-center font-display text-3xl uppercase tracking-tight sm:text-4xl"
         >
-          <span className="bg-gradient-to-r from-claude-primary to-claude-secondary bg-clip-text text-transparent">
+          <span className="inline-block bg-brutal-yellow px-3 py-1 shadow-brutal">
             Technical Skills
           </span>
         </motion.h2>
@@ -106,58 +106,57 @@ const Skills = () => {
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-center text-claude-text_dim mb-12"
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="mb-12 text-center font-mono text-sm font-bold uppercase tracking-wide"
         >
-          Expertise across mobile, AI/ML, backend, frontend, and development tools
+          Mobile / AI-ML / Backend / Frontend / Tools
         </motion.p>
 
         {/* Category Filter */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex flex-wrap justify-center gap-4 mb-16"
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="mb-16 flex flex-wrap justify-center gap-4"
         >
           {categories.map((category) => {
             const Icon = category.icon
             return (
-              <motion.button
+              <button
                 key={category.name}
                 onClick={() => setActiveCategory(category.name)}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className={`flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all duration-300 ${
+                className={`brutal-btn flex items-center gap-2 px-5 py-2.5 ${
                   activeCategory === category.name
-                    ? 'bg-claude-primary text-claude-dark shadow-lg shadow-claude-primary/30'
-                    : 'bg-claude-card border border-claude-primary/20 text-claude-text hover:border-claude-primary/50'
+                    ? 'bg-brutal-orange'
+                    : 'bg-white'
                 }`}
               >
-                <Icon size={20} />
+                <Icon size={18} />
                 {category.name}
-              </motion.button>
+              </button>
             )
           })}
         </motion.div>
 
         {/* Skills Grid */}
         <motion.div
+          key={activeCategory}
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid gap-x-10 gap-y-8 md:grid-cols-2 lg:grid-cols-3"
         >
           {skillsData[activeCategory].map((skill, i) => (
             <motion.div key={i} variants={itemVariants}>
-              <div className="space-y-3">
-                <div className="flex justify-between items-end">
-                  <h3 className="text-lg font-semibold text-claude-text">{skill.name}</h3>
-                  <span className="text-sm text-claude-primary font-bold">{skill.level}%</span>
+              <div className="space-y-2">
+                <div className="flex items-end justify-between">
+                  <h3 className="text-lg font-bold uppercase">{skill.name}</h3>
+                  <span className="font-mono text-sm font-bold">{skill.level}%</span>
                 </div>
-                <div className="h-2 bg-claude-card rounded-full overflow-hidden">
+                <div className="h-6 border-3 border-ink bg-white">
                   <motion.div
                     variants={barVariants}
-                    className="h-full bg-gradient-to-r from-claude-primary to-claude-secondary rounded-full origin-left"
+                    className="brutal-stripes h-full origin-left bg-brutal-orange"
                     style={{ width: `${skill.level}%` }}
                   />
                 </div>

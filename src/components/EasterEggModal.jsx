@@ -11,24 +11,22 @@ const EasterEggModal = ({ isOpen, onClose }) => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={onClose}
-          className="fixed inset-0 bg-black/80 backdrop-blur-md z-[100] flex items-center justify-center p-4"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-ink/80 p-4"
         >
           <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
             onClick={(e) => e.stopPropagation()}
-            className="relative w-full max-w-4xl bg-claude-dark rounded-lg overflow-hidden"
+            className="relative w-full max-w-4xl overflow-hidden border-3 border-ink bg-paper shadow-brutal-xl"
           >
             {/* Close Button */}
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
+            <button
               onClick={onClose}
-              className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-claude-primary flex items-center justify-center hover:bg-claude-primary/90 transition-colors"
+              className="brutal-btn absolute top-4 right-4 z-10 flex h-10 w-10 items-center justify-center bg-brutal-orange"
             >
-              <X size={24} className="text-claude-dark" />
-            </motion.button>
+              <X size={24} />
+            </button>
 
             {/* Fun message */}
             <div className="p-6 text-center">
@@ -36,7 +34,7 @@ const EasterEggModal = ({ isOpen, onClose }) => {
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
-                className="text-2xl font-bold text-claude-primary mb-2"
+                className="mb-2 font-display text-2xl uppercase"
               >
                 You Found the Easter Egg! 🥚
               </motion.h2>
@@ -44,28 +42,28 @@ const EasterEggModal = ({ isOpen, onClose }) => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.3 }}
-                className="text-claude-text_dim mb-6"
+                className="mb-6 font-medium"
               >
                 Here's a glimpse into working with me...
               </motion.p>
             </div>
 
             {/* Video Player */}
-            <div className="aspect-video bg-black">
+            <div className="aspect-video border-y-3 border-ink bg-ink">
               <video
                 src="https://raw.githubusercontent.com/Ripnrip/guriboycodes-portfolio-claude/main/public/videos/working-with-me.mp4"
                 controls
                 autoPlay
-                className="w-full h-full"
+                className="h-full w-full"
               >
                 Your browser does not support the video tag.
               </video>
             </div>
 
             {/* Footer */}
-            <div className="p-6 bg-gradient-to-r from-claude-card to-claude-card/50 text-center">
-              <p className="text-sm text-claude-text_dim">
-                You can trigger this again with the Konami Code (↑ ↑ ↓ ↓ ← → ← → B A) or by clicking the profile name 5 times!
+            <div className="p-6 text-center">
+              <p className="font-mono text-sm font-bold uppercase">
+                Trigger this again with the Konami Code (↑ ↑ ↓ ↓ ← → ← → B A) or by clicking the profile name 5 times!
               </p>
             </div>
           </motion.div>

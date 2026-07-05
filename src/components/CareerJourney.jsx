@@ -11,6 +11,7 @@ const CareerJourney = () => {
       company: 'PayPal',
       role: 'Staff Software Engineer',
       period: '2020 - Present',
+      accent: 'bg-brutal-orange',
       achievements: [
         'Agent0 — Deployed autonomous AI agent framework to Venmo & PayPal engineering teams',
         'Project Mercury — AI-Powered Agentic E-Commerce (GraphRAG/MCP), prototype built in 72 hrs, presented to SVP of AI',
@@ -28,6 +29,7 @@ const CareerJourney = () => {
       company: 'Google Stadia / HCL',
       role: 'Software Engineer',
       period: '2019 - 2020',
+      accent: 'bg-brutal-yellow',
       achievements: [
         'Flutter/iOS development',
         'Core Bluetooth for Stadia controller',
@@ -40,6 +42,7 @@ const CareerJourney = () => {
       company: 'Morgan Stanley',
       role: 'iOS Developer',
       period: '2018 - 2019',
+      accent: 'bg-brutal-lilac',
       achievements: [
         'Wealth Management iOS app',
         'Financial data visualization',
@@ -50,44 +53,50 @@ const CareerJourney = () => {
   ]
 
   return (
-    <section id="experience" className="py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto">
+    <section id="experience" className="px-4 py-20 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-4xl">
         <motion.h2
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-3xl sm:text-4xl font-bold mb-12 text-center"
+          transition={{ duration: 0.5 }}
+          className="mb-12 text-center font-display text-3xl uppercase tracking-tight sm:text-4xl"
         >
-          <span className="bg-gradient-to-r from-claude-primary to-claude-secondary bg-clip-text text-transparent">
+          <span className="inline-block bg-brutal-orange px-3 py-1 shadow-brutal">
             Career Journey
           </span>
         </motion.h2>
 
-        <div className="space-y-4">
+        <div className="space-y-6">
           {positions.map((position, i) => (
             <motion.div
               key={position.id}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
+              transition={{ duration: 0.4, delay: i * 0.1 }}
+              className="brutal-card"
             >
               <button
                 onClick={() => setExpandedId(expandedId === position.id ? -1 : position.id)}
-                className="w-full text-left p-6 rounded-lg bg-claude-card border border-claude-primary/20 hover:border-claude-primary/50 transition-colors"
+                className="w-full p-6 text-left"
               >
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between gap-4">
                   <div className="flex-1">
-                    <h3 className="text-xl font-bold text-claude-primary mb-1">
-                      {position.company}
-                    </h3>
-                    <p className="text-claude-text mb-2">{position.role}</p>
-                    <p className="text-sm text-claude-text_dim">{position.period}</p>
+                    <div className="mb-2 flex flex-wrap items-center gap-3">
+                      <h3 className="font-display text-xl uppercase">
+                        {position.company}
+                      </h3>
+                      <span className={`border-2 border-ink px-2 py-0.5 font-mono text-xs font-bold uppercase ${position.accent}`}>
+                        {position.period}
+                      </span>
+                    </div>
+                    <p className="font-bold">{position.role}</p>
                   </div>
                   <motion.div
                     animate={{ rotate: expandedId === position.id ? 180 : 0 }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.2 }}
+                    className="flex h-9 w-9 flex-shrink-0 items-center justify-center border-2 border-ink bg-white"
                   >
-                    <ChevronDown className="text-claude-primary" size={24} />
+                    <ChevronDown size={22} />
                   </motion.div>
                 </div>
               </button>
@@ -98,33 +107,30 @@ const CareerJourney = () => {
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: 'auto' }}
                     exit={{ opacity: 0, height: 0 }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.25 }}
                     className="overflow-hidden"
                   >
-                    <div className="p-6 bg-claude-card/50 border border-t-0 border-claude-primary/20 rounded-b-lg space-y-4">
+                    <div className="space-y-5 border-t-3 border-ink bg-paper p-6">
                       <div>
-                        <h4 className="text-sm font-semibold text-claude-primary mb-3">
+                        <h4 className="mb-3 font-mono text-xs font-bold uppercase tracking-widest">
                           Key Achievements
                         </h4>
                         <ul className="space-y-2">
                           {position.achievements.map((achievement, j) => (
-                            <li key={j} className="flex items-start gap-3 text-sm text-claude-text_dim">
-                              <span className="w-2 h-2 rounded-full bg-claude-primary mt-1.5 flex-shrink-0" />
+                            <li key={j} className="flex items-start gap-3 text-sm font-medium">
+                              <span className="mt-1.5 h-2 w-2 flex-shrink-0 bg-ink" />
                               <span>{achievement}</span>
                             </li>
                           ))}
                         </ul>
                       </div>
                       <div>
-                        <h4 className="text-sm font-semibold text-claude-primary mb-2">
+                        <h4 className="mb-2 font-mono text-xs font-bold uppercase tracking-widest">
                           Technologies
                         </h4>
                         <div className="flex flex-wrap gap-2">
                           {position.technologies.map((tech, j) => (
-                            <span
-                              key={j}
-                              className="px-3 py-1 rounded-full bg-claude-primary/20 text-claude-primary text-xs font-medium"
-                            >
+                            <span key={j} className="brutal-chip">
                               {tech}
                             </span>
                           ))}

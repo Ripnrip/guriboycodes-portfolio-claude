@@ -4,21 +4,21 @@ import { Github, Linkedin, Mail, ExternalLink } from 'lucide-react'
 
 const Contact = () => {
   const socialLinks = [
-    { icon: Github, href: 'https://github.com/Ripnrip', label: 'GitHub' },
-    { icon: Linkedin, href: 'https://www.linkedin.com/in/gurinder-singh-a30a1a48', label: 'LinkedIn' },
-    { icon: Mail, href: 'mailto:contact@guriboycodes.com', label: 'Email' },
+    { icon: Github, href: 'https://github.com/Ripnrip', label: 'GitHub', bg: 'bg-brutal-yellow' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/in/gurinder-singh-a30a1a48', label: 'LinkedIn', bg: 'bg-brutal-lilac' },
+    { icon: Mail, href: 'mailto:contact@guriboycodes.com', label: 'Email', bg: 'bg-brutal-mint' },
   ]
 
   return (
-    <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 border-t border-claude-primary/20">
-      <div className="max-w-4xl mx-auto text-center">
+    <section id="contact" className="border-t-3 border-ink px-4 py-20 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-4xl text-center">
         <motion.h2
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-3xl sm:text-4xl font-bold mb-6"
+          transition={{ duration: 0.5 }}
+          className="mb-6 font-display text-4xl uppercase tracking-tight sm:text-5xl"
         >
-          <span className="bg-gradient-to-r from-claude-primary to-claude-secondary bg-clip-text text-transparent">
+          <span className="inline-block bg-brutal-orange px-3 py-1 shadow-brutal">
             Let's Connect
           </span>
         </motion.h2>
@@ -26,8 +26,8 @@ const Contact = () => {
         <motion.p
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-lg text-claude-text_dim mb-12 max-w-2xl mx-auto"
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="mx-auto mb-12 max-w-2xl text-lg font-medium"
         >
           Interested in collaborating on innovative projects? Get in touch and let's build something legendary together.
         </motion.p>
@@ -36,8 +36,8 @@ const Contact = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex justify-center gap-6 mb-16"
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="mb-16 flex justify-center gap-6"
         >
           {socialLinks.map((link) => {
             const Icon = link.icon
@@ -47,9 +47,10 @@ const Contact = () => {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-4 rounded-lg bg-claude-card border border-claude-primary/30 hover:border-claude-primary/60 hover:bg-claude-primary/10 transition-all duration-300 group"
+                className={`brutal-btn ${link.bg} p-4`}
+                aria-label={link.label}
               >
-                <Icon size={24} className="text-claude-primary group-hover:scale-110 transition-transform" />
+                <Icon size={24} />
               </a>
             )
           })}
@@ -59,34 +60,34 @@ const Contact = () => {
         <motion.a
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
           href="mailto:contact@guriboycodes.com"
-          className="inline-flex items-center gap-2 px-8 py-3 bg-claude-primary text-claude-dark font-semibold rounded-lg hover:bg-claude-accent transition-colors group"
+          className="brutal-btn group inline-flex items-center gap-2 bg-ink px-8 py-4 text-lg text-paper"
         >
           <span>Send me an email</span>
-          <ExternalLink size={18} className="group-hover:translate-x-1 transition-transform" />
+          <ExternalLink size={18} className="transition-transform group-hover:translate-x-1" />
         </motion.a>
 
         {/* Footer */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-20 pt-12 border-t border-claude-primary/10 text-center"
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="mt-20 border-t-3 border-ink pt-12 text-center"
         >
-          <p className="text-sm text-claude-text_dim mb-4">
-            Built with <span className="text-claude-primary">Claude</span> — AI-powered development
+          <p className="mb-4 font-mono text-sm font-bold uppercase">
+            Built with <span className="bg-brutal-orange px-1">Claude</span> — AI-powered development
           </p>
-          <p className="text-xs text-claude-text_dim/70">
+          <p className="font-mono text-xs">
             © {new Date().getFullYear()} GuriboyCodes. All rights reserved.
           </p>
-          <div className="mt-6 flex items-center justify-center gap-2 text-xs text-claude-text_dim/70">
+          <div className="mt-6 flex items-center justify-center gap-2 font-mono text-xs font-bold uppercase">
             <span>Powered by</span>
             <a
               href="https://claude.ai"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-claude-primary hover:text-claude-accent transition-colors"
+              className="underline decoration-2 underline-offset-2 hover:bg-brutal-yellow"
             >
               Claude AI
             </a>
@@ -95,7 +96,7 @@ const Contact = () => {
               href="https://vitejs.dev"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-claude-primary hover:text-claude-accent transition-colors"
+              className="underline decoration-2 underline-offset-2 hover:bg-brutal-yellow"
             >
               Vite
             </a>
@@ -104,7 +105,7 @@ const Contact = () => {
               href="https://tailwindcss.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-claude-primary hover:text-claude-accent transition-colors"
+              className="underline decoration-2 underline-offset-2 hover:bg-brutal-yellow"
             >
               Tailwind CSS
             </a>

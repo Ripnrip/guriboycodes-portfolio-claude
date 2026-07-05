@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ExternalLink, Github } from 'lucide-react'
-import { projects, getCategories, getProjectsByCategory } from '../data/projects'
+import { getCategories, getProjectsByCategory } from '../data/projects'
 
 const Projects = () => {
   const [activeCategory, setActiveCategory] = useState('All')
@@ -13,8 +13,8 @@ const Projects = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
+        staggerChildren: 0.08,
+        delayChildren: 0.1,
       },
     },
   }
@@ -24,20 +24,20 @@ const Projects = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.5 },
+      transition: { duration: 0.4 },
     },
   }
 
   return (
-    <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
+    <section id="projects" className="px-4 py-20 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl">
         <motion.h2
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-3xl sm:text-4xl font-bold mb-12 text-center"
+          transition={{ duration: 0.5 }}
+          className="mb-12 text-center font-display text-3xl uppercase tracking-tight sm:text-4xl"
         >
-          <span className="bg-gradient-to-r from-claude-primary to-claude-secondary bg-clip-text text-transparent">
+          <span className="inline-block bg-brutal-mint px-3 py-1 shadow-brutal">
             Featured Projects
           </span>
         </motion.h2>
@@ -46,17 +46,15 @@ const Projects = () => {
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="flex flex-wrap gap-3 mb-12 justify-center"
+          transition={{ duration: 0.4, delay: 0.1 }}
+          className="mb-12 flex flex-wrap justify-center gap-3"
         >
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                activeCategory === cat
-                  ? 'bg-claude-primary text-claude-dark'
-                  : 'bg-claude-card border border-claude-primary/30 text-claude-text hover:border-claude-primary/60'
+              className={`brutal-btn px-4 py-2 text-sm ${
+                activeCategory === cat ? 'bg-brutal-orange' : 'bg-white'
               }`}
             >
               {cat}
@@ -66,10 +64,11 @@ const Projects = () => {
 
         {/* Projects Grid */}
         <motion.div
+          key={activeCategory}
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid gap-8 md:grid-cols-2 lg:grid-cols-3"
         >
           <AnimatePresence mode="wait">
             {displayedProjects.map((project) => (
@@ -77,63 +76,58 @@ const Projects = () => {
                 key={project.id}
                 variants={itemVariants}
                 exit={{ opacity: 0, y: -20 }}
-                className="group rounded-lg overflow-hidden bg-claude-card border border-claude-primary/20 hover:border-claude-primary/50 transition-all duration-300 flex flex-col h-full"
+                className="brutal-card brutal-card-hover group flex h-full flex-col overflow-hidden"
               >
                 {/* Image */}
-                <div className="relative h-48 overflow-hidden bg-claude-primary/5">
+                <div className="relative h-48 overflow-hidden border-b-3 border-ink bg-paper">
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-claude-dark/80 to-transparent" />
-
                   {project.hackathon && (
-                    <div className="absolute top-3 right-3 px-3 py-1 bg-claude-primary text-claude-dark text-xs font-bold rounded-full">
+                    <div className="absolute top-3 right-3 border-2 border-ink bg-brutal-yellow px-2 py-1 font-mono text-xs font-bold uppercase shadow-brutal-sm">
                       {project.hackathon}
                     </div>
                   )}
                 </div>
 
                 {/* Content */}
-                <div className="p-6 flex-1 flex flex-col">
+                <div className="flex flex-1 flex-col p-6">
                   <div className="mb-4">
-                    <span className="inline-block px-2.5 py-1 text-xs font-semibold text-claude-primary bg-claude-primary/10 rounded-full mb-3">
+                    <span className="brutal-chip mb-3 bg-brutal-lilac">
                       {project.category}
                     </span>
-                    <h3 className="text-lg font-bold text-claude-text mb-2 group-hover:text-claude-primary transition-colors">
+                    <h3 className="mb-2 font-display text-lg uppercase leading-tight">
                       {project.title}
                     </h3>
-                    <p className="text-sm text-claude-text_dim leading-relaxed">
+                    <p className="text-sm font-medium leading-relaxed">
                       {project.description}
                     </p>
                   </div>
 
                   {/* Tech Stack */}
-                  <div className="flex flex-wrap gap-2 mb-6 mt-auto">
+                  <div className="mt-auto mb-6 flex flex-wrap gap-2">
                     {project.technologies.map((tech, i) => (
-                      <span
-                        key={i}
-                        className="text-xs px-2.5 py-1 rounded bg-claude-primary/10 text-claude-secondary border border-claude-primary/20"
-                      >
+                      <span key={i} className="brutal-chip">
                         {tech}
                       </span>
                     ))}
                   </div>
 
                   {/* Links */}
-                  <div className="flex gap-3 pt-4 border-t border-claude-primary/10">
+                  <div className="flex gap-3">
                     <a
                       href={project.links.github}
-                      className="flex-1 flex items-center justify-center gap-2 px-3 py-2 rounded bg-claude-primary/10 hover:bg-claude-primary/20 text-claude-primary text-sm font-medium transition-colors"
+                      className="brutal-btn flex flex-1 items-center justify-center gap-2 bg-white px-3 py-2 text-sm"
                     >
                       <Github size={16} />
                       <span>Code</span>
                     </a>
                     <a
                       href={project.links.demo}
-                      className="flex-1 flex items-center justify-center gap-2 px-3 py-2 rounded bg-claude-primary text-claude-dark text-sm font-medium hover:bg-claude-accent transition-colors"
+                      className="brutal-btn flex flex-1 items-center justify-center gap-2 bg-ink px-3 py-2 text-sm text-paper"
                     >
                       <ExternalLink size={16} />
                       <span>Live</span>

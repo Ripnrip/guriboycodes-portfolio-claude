@@ -15,7 +15,7 @@ const ScrollingTicker = () => {
   const displayItems = [...items, ...items]
 
   return (
-    <section className="py-12 overflow-hidden bg-claude-primary/10 border-y border-claude-primary/20">
+    <section className="overflow-hidden border-y-3 border-ink bg-ink py-4">
       <motion.div
         className="flex gap-8 whitespace-nowrap"
         animate={{ x: ['0%', '-50%'] }}
@@ -27,10 +27,10 @@ const ScrollingTicker = () => {
       >
         {displayItems.map((item, i) => (
           <div key={i} className="flex items-center gap-8">
-            <span className="text-sm sm:text-base font-semibold text-claude-primary flex-shrink-0">
+            <span className="flex-shrink-0 font-display text-lg uppercase tracking-wide text-brutal-yellow sm:text-xl">
               {item}
             </span>
-            <div className="w-1.5 h-1.5 rounded-full bg-claude-primary flex-shrink-0" />
+            <span className="flex-shrink-0 text-brutal-orange">★</span>
           </div>
         ))}
       </motion.div>

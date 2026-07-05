@@ -7,19 +7,30 @@ export default {
   theme: {
     extend: {
       colors: {
-        claude: {
-          primary: '#D97757',
-          secondary: '#E8B4A0',
-          accent: '#C4704A',
-          dark: '#0D0A08',
-          card: 'rgba(25,18,12,0.8)',
-          text: '#F5EDE8',
-          text_dim: '#C4B5AB',
-        }
+        ink: '#141414',
+        paper: '#F3EFE7',
+        brutal: {
+          orange: '#D97757',
+          yellow: '#FFC700',
+          lilac: '#C4B0F3',
+          mint: '#A6E3C4',
+          pink: '#F5B8C8',
+        },
       },
-      backgroundColor: {
-        'claude-dark': '#0D0A08',
-      }
+      fontFamily: {
+        display: ['"Archivo Black"', 'Impact', 'Haettenschweiler', 'sans-serif'],
+        sans: ['"Space Grotesk"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        mono: ['"Space Mono"', 'ui-monospace', 'monospace'],
+      },
+      boxShadow: {
+        'brutal-sm': '3px 3px 0 0 #141414',
+        brutal: '5px 5px 0 0 #141414',
+        'brutal-lg': '8px 8px 0 0 #141414',
+        'brutal-xl': '12px 12px 0 0 #141414',
+      },
+      borderWidth: {
+        3: '3px',
+      },
     }
   },
   plugins: [],

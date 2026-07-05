@@ -43,8 +43,8 @@ const FeaturedVideos = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.2,
+        staggerChildren: 0.1,
+        delayChildren: 0.1,
       },
     },
   }
@@ -54,20 +54,20 @@ const FeaturedVideos = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6 },
+      transition: { duration: 0.5 },
     },
   }
 
   return (
-    <section id="videos" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-transparent via-claude-primary/5 to-transparent">
-      <div className="max-w-6xl mx-auto">
+    <section id="videos" className="px-4 py-20 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-6xl">
         <motion.h2
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-3xl sm:text-4xl font-bold mb-12 text-center"
+          transition={{ duration: 0.5 }}
+          className="mb-12 text-center font-display text-3xl uppercase tracking-tight sm:text-4xl"
         >
-          <span className="bg-gradient-to-r from-claude-primary to-claude-secondary bg-clip-text text-transparent">
+          <span className="inline-block bg-brutal-pink px-3 py-1 shadow-brutal">
             Featured Videos
           </span>
         </motion.h2>
@@ -76,42 +76,35 @@ const FeaturedVideos = () => {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid gap-8 md:grid-cols-2 lg:grid-cols-3"
         >
           {videos.map((video) => (
             <motion.div
               key={video.id}
               variants={itemVariants}
-              whileHover={{ y: -5 }}
               className="group cursor-pointer"
               onClick={() => setSelectedVideo(video)}
             >
-              <div className="relative overflow-hidden rounded-lg">
+              <div className="brutal-card brutal-card-hover relative overflow-hidden">
                 {/* Thumbnail */}
                 <img
                   src={video.thumbnail}
                   alt={video.title}
-                  className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+                  className="h-48 w-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-claude-dark via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                 {/* Play Button */}
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <motion.div
-                    className="w-16 h-16 rounded-full bg-claude-primary flex items-center justify-center shadow-lg shadow-claude-primary/50 group-hover:shadow-claude-primary/70 transition-all duration-300"
-                    whileHover={{ scale: 1.1 }}
-                  >
-                    <Play size={28} className="text-claude-dark fill-claude-dark" />
-                  </motion.div>
+                  <div className="flex h-16 w-16 items-center justify-center border-3 border-ink bg-brutal-orange shadow-brutal transition-transform duration-150 group-hover:scale-110">
+                    <Play size={28} className="fill-ink" />
+                  </div>
                 </div>
               </div>
 
               {/* Card Info */}
               <div className="mt-4">
-                <h3 className="text-lg font-bold text-claude-text group-hover:text-claude-primary transition-colors">{video.title}</h3>
-                <p className="text-sm text-claude-primary font-semibold mt-1">{video.event}</p>
+                <h3 className="font-display text-lg uppercase leading-tight">{video.title}</h3>
+                <p className="mt-1 font-mono text-sm font-bold uppercase">{video.event}</p>
               </div>
             </motion.div>
           ))}
@@ -126,41 +119,39 @@ const FeaturedVideos = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setSelectedVideo(null)}
-            className="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-ink/80 p-4"
           >
             <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-4xl bg-claude-dark rounded-lg overflow-hidden"
+              className="relative w-full max-w-4xl overflow-hidden border-3 border-ink bg-paper shadow-brutal-xl"
             >
               {/* Close Button */}
-              <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
+              <button
                 onClick={() => setSelectedVideo(null)}
-                className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-claude-primary flex items-center justify-center hover:bg-claude-primary/90 transition-colors"
+                className="brutal-btn absolute top-4 right-4 z-10 flex h-10 w-10 items-center justify-center bg-brutal-orange"
               >
-                <X size={24} className="text-claude-dark" />
-              </motion.button>
+                <X size={24} />
+              </button>
 
               {/* Video Player */}
-              <div className="aspect-video bg-black">
+              <div className="aspect-video border-b-3 border-ink bg-ink">
                 <video
                   src={selectedVideo.url}
                   controls
                   autoPlay
-                  className="w-full h-full"
+                  className="h-full w-full"
                 >
                   Your browser does not support the video tag.
                 </video>
               </div>
 
               {/* Video Info */}
-              <div className="p-6 bg-gradient-to-r from-claude-card to-claude-card/50">
-                <h3 className="text-2xl font-bold text-claude-text mb-2">{selectedVideo.title}</h3>
-                <p className="text-lg text-claude-primary font-semibold">{selectedVideo.event}</p>
+              <div className="p-6">
+                <h3 className="mb-2 font-display text-2xl uppercase">{selectedVideo.title}</h3>
+                <p className="font-mono text-lg font-bold uppercase">{selectedVideo.event}</p>
               </div>
             </motion.div>
           </motion.div>
