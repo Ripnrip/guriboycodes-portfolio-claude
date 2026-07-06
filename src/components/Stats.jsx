@@ -4,10 +4,10 @@ import CountUp from '../utils/CountUp'
 
 const Stats = () => {
   const stats = [
-    { label: 'Users Impacted', value: '90M', suffix: '+' },
-    { label: 'Interviews', value: '500', suffix: '+' },
-    { label: 'Hackathons', value: '28', suffix: '+' },
-    { label: 'Years Experience', value: '8', suffix: '+' },
+    { label: 'Users Impacted', value: '90', suffix: 'M+', bg: 'bg-brutal-orange' },
+    { label: 'Interviews', value: '500', suffix: '+', bg: 'bg-brutal-yellow' },
+    { label: 'Hackathons', value: '28', suffix: '+', bg: 'bg-brutal-lilac' },
+    { label: 'Years Experience', value: '8', suffix: '+', bg: 'bg-brutal-mint' },
   ]
 
   const containerVariants = {
@@ -26,30 +26,32 @@ const Stats = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6 },
+      transition: { duration: 0.5 },
     },
   }
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-claude-dark to-claude-dark/50">
-      <div className="max-w-6xl mx-auto">
+    <section className="px-4 py-20 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-6xl">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="grid grid-cols-2 md:grid-cols-4 gap-8"
+          className="grid grid-cols-2 gap-6 md:grid-cols-4"
         >
           {stats.map((stat, i) => (
             <motion.div
               key={i}
               variants={itemVariants}
-              className="text-center p-6 rounded-lg bg-claude-card border border-claude-primary/10 hover:border-claude-primary/30 transition-colors"
+              className={`brutal-card brutal-card-hover ${stat.bg} p-6 text-center`}
             >
-              <div className="text-3xl sm:text-4xl font-bold text-claude-primary mb-2">
+              <div className="mb-2 font-display text-3xl sm:text-4xl">
                 <CountUp end={parseInt(stat.value)} />
                 {stat.suffix}
               </div>
-              <p className="text-sm sm:text-base text-claude-text_dim">{stat.label}</p>
+              <p className="font-mono text-xs font-bold uppercase tracking-wide sm:text-sm">
+                {stat.label}
+              </p>
             </motion.div>
           ))}
         </motion.div>

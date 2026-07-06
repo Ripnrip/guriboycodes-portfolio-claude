@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Users, Briefcase, Heart, Award, BookOpen, Trophy } from 'lucide-react'
+import { Users, Heart, Award, BookOpen, Trophy } from 'lucide-react'
 import CountUp from '../utils/CountUp'
 
 const Leadership = () => {
@@ -10,30 +10,35 @@ const Leadership = () => {
       number: 20,
       label: 'Engineers Mentored',
       suffix: '+',
+      bg: 'bg-brutal-orange',
     },
     {
       icon: Users,
       number: 150,
       label: 'ERG Members',
       suffix: '+',
+      bg: 'bg-brutal-yellow',
     },
     {
       icon: BookOpen,
       number: 500,
       label: 'Students Reached',
       suffix: '+',
+      bg: 'bg-brutal-lilac',
     },
     {
       icon: Award,
       number: 10,
       label: 'Years Experience',
       suffix: '+',
+      bg: 'bg-brutal-mint',
     },
     {
       icon: Heart,
       number: 25,
       label: 'Community Events',
       suffix: '+',
+      bg: 'bg-brutal-pink',
     },
   ]
 
@@ -69,8 +74,8 @@ const Leadership = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.2,
+        staggerChildren: 0.1,
+        delayChildren: 0.1,
       },
     },
   }
@@ -80,41 +85,41 @@ const Leadership = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6 },
+      transition: { duration: 0.5 },
     },
   }
 
   const statVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
+    hidden: { opacity: 0, scale: 0.9 },
     visible: {
       opacity: 1,
       scale: 1,
-      transition: { duration: 0.6 },
+      transition: { duration: 0.4 },
     },
   }
 
   return (
-    <section id="leadership" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-transparent to-claude-primary/5">
-      <div className="max-w-6xl mx-auto">
+    <section id="leadership" className="px-4 py-20 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-6xl">
         {/* Hero Stat */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.5 }}
+          className="mb-16 text-center"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-            <span className="bg-gradient-to-r from-claude-primary to-claude-secondary bg-clip-text text-transparent">
+          <h2 className="mb-4 font-display text-3xl uppercase tracking-tight sm:text-4xl">
+            <span className="inline-block bg-brutal-orange px-3 py-1 shadow-brutal">
               Community & Leadership
             </span>
           </h2>
-          <div className="inline-block mt-8">
-            <div className="p-8 rounded-lg bg-claude-card border border-claude-primary/30 backdrop-blur-md">
-              <div className="text-5xl sm:text-6xl font-bold text-claude-primary mb-3">
+          <div className="mt-10 inline-block">
+            <div className="brutal-card bg-brutal-yellow p-8 shadow-brutal-lg">
+              <div className="mb-3 font-display text-5xl sm:text-6xl">
                 <CountUp end={500} duration={2.5} />
                 <span>+</span>
               </div>
-              <p className="text-lg font-semibold text-claude-text">Technical Interviews Conducted</p>
+              <p className="font-mono text-lg font-bold uppercase">Technical Interviews Conducted</p>
             </div>
           </div>
         </motion.div>
@@ -124,7 +129,7 @@ const Leadership = () => {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6 mb-16"
+          className="mb-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-5"
         >
           {leadershipStats.map((stat, i) => {
             const Icon = stat.icon
@@ -132,16 +137,16 @@ const Leadership = () => {
               <motion.div
                 key={i}
                 variants={statVariants}
-                className="p-6 rounded-lg bg-claude-card border border-claude-primary/20 hover:border-claude-primary/50 transition-all duration-300 text-center group hover:shadow-lg hover:shadow-claude-primary/10"
+                className={`brutal-card brutal-card-hover ${stat.bg} p-6 text-center`}
               >
-                <div className="inline-flex p-3 rounded-lg bg-claude-primary/20 group-hover:bg-claude-primary/30 transition-colors mb-4">
-                  <Icon size={28} className="text-claude-primary" />
+                <div className="mb-4 inline-flex border-2 border-ink bg-white p-3">
+                  <Icon size={26} />
                 </div>
-                <div className="text-3xl font-bold text-claude-primary mb-2">
+                <div className="mb-2 font-display text-3xl">
                   <CountUp end={stat.number} duration={2} />
                   <span>{stat.suffix}</span>
                 </div>
-                <p className="text-sm text-claude-text_dim">{stat.label}</p>
+                <p className="font-mono text-xs font-bold uppercase">{stat.label}</p>
               </motion.div>
             )
           })}
@@ -151,15 +156,15 @@ const Leadership = () => {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
           className="mb-16"
         >
-          <h3 className="text-2xl font-bold text-claude-text mb-8 text-center">Leadership Initiatives</h3>
+          <h3 className="mb-8 text-center font-display text-2xl uppercase">Leadership Initiatives</h3>
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="grid md:grid-cols-2 gap-6"
+            className="grid gap-6 md:grid-cols-2"
           >
             {initiatives.map((initiative, i) => {
               const Icon = initiative.icon
@@ -167,16 +172,16 @@ const Leadership = () => {
                 <motion.div
                   key={i}
                   variants={itemVariants}
-                  className="p-6 rounded-lg bg-gradient-to-br from-claude-card to-claude-card/50 border border-claude-primary/20 hover:border-claude-primary/50 hover:shadow-lg hover:shadow-claude-primary/10 transition-all duration-300"
+                  className="brutal-card brutal-card-hover p-6"
                 >
                   <div className="flex items-start gap-4">
-                    <div className="p-3 rounded-lg bg-claude-primary/20 mt-1">
-                      <Icon size={24} className="text-claude-primary" />
+                    <div className="mt-1 border-2 border-ink bg-brutal-yellow p-3">
+                      <Icon size={24} />
                     </div>
                     <div className="flex-1">
-                      <h4 className="text-lg font-bold text-claude-text mb-1">{initiative.title}</h4>
-                      <p className="text-sm text-claude-primary font-semibold mb-3">{initiative.period}</p>
-                      <p className="text-sm leading-relaxed text-claude-text_dim">{initiative.description}</p>
+                      <h4 className="mb-1 font-display text-lg uppercase">{initiative.title}</h4>
+                      <p className="mb-3 font-mono text-sm font-bold">{initiative.period}</p>
+                      <p className="text-sm font-medium leading-relaxed">{initiative.description}</p>
                     </div>
                   </div>
                 </motion.div>
@@ -189,18 +194,18 @@ const Leadership = () => {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="p-8 rounded-lg bg-gradient-to-br from-claude-primary/20 to-claude-secondary/10 border border-claude-primary/40 text-center"
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="brutal-card bg-brutal-orange p-8 text-center shadow-brutal-lg"
         >
-          <h3 className="text-2xl font-bold text-claude-text mb-2">Featured Community Project</h3>
-          <p className="text-xl font-semibold text-claude-primary mb-3">ERG Langar App</p>
-          <p className="text-claude-text_dim mb-4 max-w-2xl mx-auto">
+          <h3 className="mb-2 font-display text-2xl uppercase">Featured Community Project</h3>
+          <p className="mb-3 font-mono text-xl font-bold uppercase">ERG Langar App</p>
+          <p className="mx-auto mb-6 max-w-2xl font-medium">
             A React Native gamified application for Sikh temple education, combining cultural heritage with modern tech. Built to make learning about Sikh traditions engaging and accessible for the community.
           </p>
-          <p className="text-sm text-claude-text_dim space-x-2">
-            <span className="inline-block px-3 py-1 rounded-full bg-claude-primary/20 text-claude-primary font-semibold">React Native</span>
-            <span className="inline-block px-3 py-1 rounded-full bg-claude-primary/20 text-claude-primary font-semibold">Education</span>
-            <span className="inline-block px-3 py-1 rounded-full bg-claude-primary/20 text-claude-primary font-semibold">Community</span>
+          <p className="space-x-2">
+            <span className="brutal-chip">React Native</span>
+            <span className="brutal-chip">Education</span>
+            <span className="brutal-chip">Community</span>
           </p>
         </motion.div>
 
@@ -208,10 +213,10 @@ const Leadership = () => {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
           className="mt-16 text-center"
         >
-          <p className="text-2xl font-bold text-claude-text italic">
+          <p className="font-display text-xl uppercase sm:text-2xl">
             "Building communities through mentorship and inclusive leadership"
           </p>
         </motion.div>
