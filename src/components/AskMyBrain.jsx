@@ -94,9 +94,10 @@ const AskMyBrain = () => {
     <section id="brain" className="px-4 py-20 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-3xl">
         <motion.h2
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          initial={{ opacity: 0, scale: 1.5, rotate: -4 }}
+          whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ type: 'spring', stiffness: 300, damping: 16 }}
           className="mb-4 text-center font-display text-3xl uppercase tracking-tight sm:text-4xl"
         >
           <span className="inline-block bg-brutal-mint px-3 py-1 shadow-brutal">
@@ -106,7 +107,8 @@ const AskMyBrain = () => {
 
         <motion.p
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.5, delay: 0.1 }}
           className="mb-8 text-center font-mono text-sm font-bold uppercase tracking-wide"
         >
@@ -114,9 +116,10 @@ const AskMyBrain = () => {
         </motion.p>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          initial={{ opacity: 0, y: 50, rotate: 1 }}
+          whileInView={{ opacity: 1, y: 0, rotate: 0 }}
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{ type: 'spring', stiffness: 200, damping: 20 }}
           className="brutal-card shadow-brutal-lg"
         >
           {/* Terminal-style header */}

@@ -81,20 +81,22 @@ const Leadership = () => {
   }
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 50, rotate: 1.5 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.5 },
+      rotate: 0,
+      transition: { type: 'spring', stiffness: 220, damping: 19 },
     },
   }
 
   const statVariants = {
-    hidden: { opacity: 0, scale: 0.9 },
+    hidden: { opacity: 0, scale: 0.6, rotate: -3 },
     visible: {
       opacity: 1,
       scale: 1,
-      transition: { duration: 0.4 },
+      rotate: 0,
+      transition: { type: 'spring', stiffness: 280, damping: 15 },
     },
   }
 
@@ -104,7 +106,8 @@ const Leadership = () => {
         {/* Hero Stat */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.5 }}
           className="mb-16 text-center"
         >
@@ -128,7 +131,8 @@ const Leadership = () => {
         <motion.div
           variants={containerVariants}
           initial="hidden"
-          animate="visible"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
           className="mb-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-5"
         >
           {leadershipStats.map((stat, i) => {
@@ -155,7 +159,8 @@ const Leadership = () => {
         {/* Leadership Initiatives */}
         <motion.div
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.5, delay: 0.3 }}
           className="mb-16"
         >
@@ -163,7 +168,8 @@ const Leadership = () => {
           <motion.div
             variants={containerVariants}
             initial="hidden"
-            animate="visible"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
             className="grid gap-6 md:grid-cols-2"
           >
             {initiatives.map((initiative, i) => {
@@ -192,9 +198,10 @@ const Leadership = () => {
 
         {/* Featured Community Project */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
+          initial={{ opacity: 0, y: 50, rotate: 1.5 }}
+          whileInView={{ opacity: 1, y: 0, rotate: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ type: 'spring', stiffness: 220, damping: 19 }}
           className="brutal-card bg-brutal-orange p-8 text-center shadow-brutal-lg"
         >
           <h3 className="mb-2 font-display text-2xl uppercase">Featured Community Project</h3>
@@ -212,8 +219,9 @@ const Leadership = () => {
         {/* Quote */}
         <motion.div
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.5 }}
           className="mt-16 text-center"
         >
           <p className="font-display text-xl uppercase sm:text-2xl">

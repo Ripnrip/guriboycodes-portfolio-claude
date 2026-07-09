@@ -20,11 +20,12 @@ const Projects = () => {
   }
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 50, rotate: 1.5 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.4 },
+      rotate: 0,
+      transition: { type: 'spring', stiffness: 220, damping: 19 },
     },
   }
 
@@ -32,9 +33,10 @@ const Projects = () => {
     <section id="projects" className="px-4 py-20 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <motion.h2
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          initial={{ opacity: 0, scale: 1.5, rotate: -4 }}
+          whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ type: 'spring', stiffness: 300, damping: 16 }}
           className="mb-12 text-center font-display text-3xl uppercase tracking-tight sm:text-4xl"
         >
           <span className="inline-block bg-brutal-mint px-3 py-1 shadow-brutal">
@@ -45,7 +47,8 @@ const Projects = () => {
         {/* Category Filter */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.4, delay: 0.1 }}
           className="mb-12 flex flex-wrap justify-center gap-3"
         >
@@ -67,7 +70,8 @@ const Projects = () => {
           key={activeCategory}
           variants={containerVariants}
           initial="hidden"
-          animate="visible"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
           className="grid gap-8 md:grid-cols-2 lg:grid-cols-3"
         >
           <AnimatePresence mode="wait">

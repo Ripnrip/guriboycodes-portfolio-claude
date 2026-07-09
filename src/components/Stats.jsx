@@ -22,11 +22,12 @@ const Stats = () => {
   }
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 50, rotate: 1.5 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.5 },
+      rotate: 0,
+      transition: { type: 'spring', stiffness: 220, damping: 19 },
     },
   }
 
@@ -36,7 +37,8 @@ const Stats = () => {
         <motion.div
           variants={containerVariants}
           initial="hidden"
-          animate="visible"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
           className="grid grid-cols-2 gap-6 md:grid-cols-4"
         >
           {stats.map((stat, i) => (
