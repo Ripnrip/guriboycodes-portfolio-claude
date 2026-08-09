@@ -13,9 +13,10 @@ const Contact = () => {
     <section id="contact" className="border-t-3 border-ink px-4 py-20 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-4xl text-center">
         <motion.h2
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          initial={{ opacity: 0, scale: 1.5, rotate: -4 }}
+          whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ type: 'spring', stiffness: 300, damping: 16 }}
           className="mb-6 font-display text-4xl uppercase tracking-tight sm:text-5xl"
         >
           <span className="inline-block bg-brutal-orange px-3 py-1 shadow-brutal">
@@ -25,7 +26,8 @@ const Contact = () => {
 
         <motion.p
           initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.5, delay: 0.1 }}
           className="mx-auto mb-12 max-w-2xl text-lg font-medium"
         >
@@ -34,9 +36,10 @@ const Contact = () => {
 
         {/* Social Links */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ type: 'spring', stiffness: 220, damping: 19 }}
           className="mb-16 flex justify-center gap-6"
         >
           {socialLinks.map((link) => {
@@ -58,9 +61,10 @@ const Contact = () => {
 
         {/* CTA Button */}
         <motion.a
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
+          initial={{ opacity: 0, scale: 0.6, rotate: -2 }}
+          whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ type: 'spring', stiffness: 280, damping: 15 }}
           href="mailto:contact@guriboycodes.com"
           className="brutal-btn group inline-flex items-center gap-2 bg-ink px-8 py-4 text-lg text-paper"
         >
@@ -71,8 +75,9 @@ const Contact = () => {
         {/* Footer */}
         <motion.div
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.5 }}
           className="mt-20 border-t-3 border-ink pt-12 text-center"
         >
           <p className="mb-4 font-mono text-sm font-bold uppercase">

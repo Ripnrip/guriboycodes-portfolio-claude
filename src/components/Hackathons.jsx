@@ -33,8 +33,8 @@ const Hackathons = () => {
   }
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
+    hidden: { opacity: 0, y: 50, rotate: 1.5 },
+    visible: { opacity: 1, y: 0, rotate: 0, transition: { type: 'spring', stiffness: 220, damping: 19 } },
   }
 
   return (
@@ -42,7 +42,8 @@ const Hackathons = () => {
       <div className="mx-auto max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.5 }}
           className="mb-8 text-center"
         >
@@ -60,7 +61,8 @@ const Hackathons = () => {
         {/* Stats */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.5, delay: 0.2 }}
           className="mb-16 grid grid-cols-2 gap-4 sm:grid-cols-4"
         >
@@ -84,8 +86,10 @@ const Hackathons = () => {
 
         {/* Featured Hackathons */}
         <motion.h3
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          initial={{ opacity: 0, scale: 1.4, rotate: -3 }}
+          whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ type: 'spring', stiffness: 300, damping: 16 }}
           className="mb-8 text-center font-display text-xl uppercase"
         >
           Featured Achievements
@@ -94,7 +98,8 @@ const Hackathons = () => {
         <motion.div
           variants={containerVariants}
           initial="hidden"
-          animate="visible"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
           className="mb-16 grid gap-8 md:grid-cols-2"
         >
           {featured.map((hackathon) => (
@@ -163,8 +168,10 @@ const Hackathons = () => {
 
         {/* Complete Journey */}
         <motion.h3
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          initial={{ opacity: 0, scale: 1.4, rotate: -3 }}
+          whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ type: 'spring', stiffness: 300, damping: 16 }}
           className="mb-8 text-center font-display text-xl uppercase"
         >
           Complete Journey
@@ -173,7 +180,8 @@ const Hackathons = () => {
         <motion.div
           variants={containerVariants}
           initial="hidden"
-          animate="visible"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
           className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4"
         >
           {all.map((hackathon) => (
