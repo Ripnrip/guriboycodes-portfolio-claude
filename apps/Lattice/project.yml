@@ -1,0 +1,98 @@
+name: Lattice
+options:
+  bundleIdPrefix: codes.guriboy.lattice
+  deploymentTarget:
+    macOS: "14.0"
+    iOS: "17.0"
+  createIntermediateGroups: true
+  generateEmptyDirectories: true
+
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    SWIFT_STRICT_CONCURRENCY: complete
+    ENABLE_USER_SCRIPT_SANDBOXING: YES
+    MARKETING_VERSION: "0.1.0"
+    CURRENT_PROJECT_VERSION: "1"
+    DEVELOPMENT_TEAM: ""          # set this, or pick a team in Signing & Capabilities
+    CODE_SIGN_STYLE: Automatic
+
+packages:
+  LatticeKit:
+    path: Packages/LatticeKit
+
+targets:
+  Lattice:
+    type: application
+    # One target for every platform: the graph engine, parser, and model are shared, and
+    # only input handling differs, which is resolved inside GraphMetalView.
+    supportedDestinations: [macOS, iOS, iPadOS]
+    sources:
+      - path: App
+    dependencies:
+      # LatticeUI transitively pulls VaultCore, MarkdownKit, VaultFiles, VaultIndex and
+      # GraphEngine, but naming them keeps the graph obvious in Xcode's UI.
+      - package: LatticeKit
+        product: VaultCore
+      - package: LatticeKit
+        product: MarkdownKit
+      - package: LatticeKit
+        product: VaultFiles
+      - package: LatticeKit
+        product: VaultIndex
+      - package: LatticeKit
+        product: GraphEngine
+      - package: LatticeKit
+        product: LatticeUI
+    settings:
+      base:
+        PRODUCT_NAME: Lattice
+        PRODUCT_BUNDLE_IDENTIFIER: codes.guriboy.lattice
+        INFOPLIST_KEY_CFBundleDisplayName: Lattice
+        INFOPLIST_KEY_NSHumanReadableCopyright: ""
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
+        INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.productivity
+        INFOPLIST_KEY_UISupportedInterfaceOrientations: >-
+          UIInterfaceOrientationPortrait
+          UIInterfaceOrientationLandscapeLeft
+          UIInterfaceOrientationLandscapeRight
+        CODE_SIGN_ENTITLEMENTS: App/Lattice.entitlements
+        # Vaults can live in iCloud Drive or any folder the user picks.
+        INFOPLIST_KEY_UIFileSharingEnabled: YES
+        INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace: YES
+        # Metal shaders live in the GraphEngine SwiftPM target and are compiled into that
+        # module's resource bundle, so the app target needs no Metal build settings.
+    postCompileScripts:
+      # Realm's prebuilt XCFrameworks are no longer code signed, because MongoDB stopped
+      # distributing them. Xcode rejects unsigned embedded frameworks, so re-sign whatever
+      # is embedded with the identity this build is already using. Harmless in Phase 1,
+      # where nothing is embedded yet; required from Phase 2 when Realm arrives.
+      - name: Re-sign embedded frameworks
+        basedOnDependencyAnalysis: false
+        script: |
+          set -euo pipefail
+          FRAMEWORKS="${CODESIGNING_FOLDER_PATH}/Frameworks"
+          [ -d "$FRAMEWORKS" ] || exit 0
+          [ -n "${EXPANDED_CODE_SIGN_IDENTITY:-}" ] || exit 0
+          find "$FRAMEWORKS" -maxdepth 1 -name '*.framework' -print0 |
+            while IFS= read -r -d '' framework; do
+              codesign --force --sign "${EXPANDED_CODE_SIGN_IDENTITY}" \
+                --timestamp=none --preserve-metadata=entitlements,flags "$framework"
+            done
+
+schemes:
+  Lattice:
+    build:
+      targets:
+        Lattice: all
+    run:
+      config: Debug
+    test:
+      config: Debug
+      # The package's own tests; they need no simulator and no GPU.
+      targets:
+        - VaultCoreTests
+        - MarkdownKitTests
+        - VaultFilesTests
+        - GraphEngineTests
