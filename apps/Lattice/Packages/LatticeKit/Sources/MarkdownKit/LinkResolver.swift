@@ -140,7 +140,11 @@ public struct LinkResolver: Sendable {
         }
     }
 
-    static func normalize(_ target: String) -> String {
+    /// The canonical form used for every link comparison: trimmed and lowercased.
+    ///
+    /// Public because rename repair in `VaultFiles` must normalise exactly the way
+    /// resolution does — if the two ever diverge, renames would repair the wrong links.
+    public static func normalize(_ target: String) -> String {
         target.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
     }
 

@@ -25,10 +25,10 @@ endif
 test:
 	swift test --package-path $(PACKAGE)
 
-## Run only the platform-independent suites.
+## Run only the platform-independent suites (no Metal, no Realm).
 test-core:
 	swift test --package-path $(PACKAGE) \
-		--filter VaultCoreTests --filter MarkdownKitTests
+		--filter VaultCoreTests --filter MarkdownKitTests --filter VaultFilesTests
 
 open:
 	open Lattice.xcodeproj

@@ -30,12 +30,20 @@ targets:
     sources:
       - path: App
     dependencies:
+      # LatticeUI transitively pulls VaultCore, MarkdownKit, VaultFiles, VaultIndex and
+      # GraphEngine, but naming them keeps the graph obvious in Xcode's UI.
       - package: LatticeKit
         product: VaultCore
       - package: LatticeKit
         product: MarkdownKit
       - package: LatticeKit
+        product: VaultFiles
+      - package: LatticeKit
+        product: VaultIndex
+      - package: LatticeKit
         product: GraphEngine
+      - package: LatticeKit
+        product: LatticeUI
     settings:
       base:
         PRODUCT_NAME: Lattice
@@ -50,6 +58,9 @@ targets:
           UIInterfaceOrientationLandscapeLeft
           UIInterfaceOrientationLandscapeRight
         CODE_SIGN_ENTITLEMENTS: App/Lattice.entitlements
+        # Vaults can live in iCloud Drive or any folder the user picks.
+        INFOPLIST_KEY_UIFileSharingEnabled: YES
+        INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace: YES
         # Metal shaders live in the GraphEngine SwiftPM target and are compiled into that
         # module's resource bundle, so the app target needs no Metal build settings.
     postCompileScripts:
@@ -83,4 +94,5 @@ schemes:
       targets:
         - VaultCoreTests
         - MarkdownKitTests
+        - VaultFilesTests
         - GraphEngineTests
